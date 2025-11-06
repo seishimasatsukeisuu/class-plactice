@@ -1,34 +1,33 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 class Microorganisms{
     public:
-     Microorganisms(char* name){
-        this->name = name;
-     }
+     Microorganisms(const string& name) : name(name) {}
+
      void introduction(){
         cout << "名前：" << this->name << endl;
      }
+
     private:
-     char* name;
+     string name;
 };
 
 class Prokaryotes: public Microorganisms{
     public:
-     Prokaryotes(char* name, bool gram_positive): Microorganisms(name){
-        this->gram_positive = gram_positive;
-     }
+     Prokaryotes(const string& name, bool gram_positive): Microorganisms(name), gram_positive(gram_positive) {}
+     
      void about_nuclear(){
         if(this->gram_positive){
-            cout << "gram_positive" << endl;
-            cout << "no_nuclear" << endl;
-            cout << "bacteria" << endl;
+            cout << "gram_positive\n";
         }
         else{
-            cout << "gram_negative" << endl;
-            cout << "no_nuclear" << endl;
-            cout << "bacteria" << endl;
+            cout << "gram_negative\n";
         }
+        cout << "no_nuclear\n";
+        cout << "bacteria" << endl;
      }
     private:
      bool gram_positive;
@@ -36,20 +35,17 @@ class Prokaryotes: public Microorganisms{
 
 class Eukaryotes: public Microorganisms{
     public:
-     Eukaryotes(char* name, bool gram_positive): Microorganisms(name){
-        this->gram_positive = gram_positive;
-     }
+     Eukaryotes(const string& name, bool gram_positive): Microorganisms(name), gram_positive(gram_positive) {}
+
      void about_nuclear(){
         if(this->gram_positive){
-            cout << "gram_positive" << endl;
-            cout << "have_nuclear" << endl;
-            cout << "eukaryotes" << endl;
+            cout << "gram_positive\n";
         }
         else{
-            cout << "gram_negative" << endl;
-            cout << "have_nuclear" << endl;
-            cout << "eukaryotes" << endl;
+            cout << "gram_negative\n";
         }
+        cout << "have_nuclear\n";
+        cout << "eukaryotes" << endl;
      }
     private:
      bool gram_positive;
